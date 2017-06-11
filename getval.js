@@ -26,7 +26,7 @@ var $getVal = function $getVal($el){
     return vals;
   }
   else{
-    //works for ther input and <select>
+    //works for other input and <select>
     return $el.val();
   }
 };
