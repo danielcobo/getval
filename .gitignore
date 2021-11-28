@@ -1,5 +1,6 @@
 node_modules
 coverage
+dist
 reports
 .stryker-tmp
 .DS_Store
