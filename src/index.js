@@ -1,24 +1,38 @@
-'use strict';
+/**
+ * Get current value of input
+ * (works for radio, etc. as well)
+ * @public
+ * @param {getVal} $el
+ * @returns
+ */
+module.exports = function getVal($el) {
+  const type = $el.getAttribute('type');
+  const $form = $el.closest('form');
 
-/*
-Get current value of input
-(works for radio, etc. as well)
-*/
-var $getVal = function $getVal($el) {
-  var type = $el.attr('type');
-  var $form = $el.closest('form');
-
-  //radio and checkbox are not efficient
+  //Radio and checkbox are not efficient
   if (type === 'radio') {
-    return $('input[name=' + $el.attr('name') + ']:checked', $form).val();
+    const val = undefined;
+    const checked = document.querySelector(
+      'input[name=' + $el.getAttribute('name') + ']:checked',
+      $form
+    );
+    if (checked) {
+      return checked.value;
+    }
   } else if (type === 'checkbox') {
-    var vals = [];
-    $('input[name=' + $el.attr('name') + ']:checked', $form).each(function () {
-      vals.push($(this).val());
+    const vals = [];
+    const checked =
+      document.querySelectorAll(
+        'input[name=' + $el.getAttribute('name') + ']:checked',
+        $form
+      ) || [];
+
+    checked.forEach(function ($checked) {
+      vals.push($checked.value);
     });
     return vals;
   } else {
-    //works for other input and <select>
-    return $el.val();
+    //input or select
+    return $el.value;
   }
 };
