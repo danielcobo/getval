@@ -2,8 +2,8 @@
  * Get current value of input
  * (works for radio, etc. as well)
  * @public
- * @param {getVal} $el
- * @returns
+ * @param {HTMLElement} $el - any input element to get value from
+ * @returns {Array.string|string} - value/s of input
  */
 module.exports = function getVal($el) {
   const type = $el.getAttribute('type');
